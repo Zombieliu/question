@@ -45,12 +45,12 @@ const Account = () =>{
             </div>
             <div className=" mx-auto  ">
                 <Link href="/main">
-                    <div className="fixed z-20 inset-x-0 text-2xl text-gray-600 px-5">
+                    <div className="fixed z-20 inset-x-0 text-2xl text-gray-600 pl-5">
                         <img className="w-8  " src="https://cdn.discordapp.com/attachments/876498266550853642/984029778149523466/Login.png" alt=""/>
                     </div>
                 </Link>
                 <div className="max-w-7xl relative px-8 py-5  mx-auto ">
-                    <div className="mt-20">
+                    <div className="mt-16">
                         {/*information*/}
                         <div className=" flex  justify-between items-center">
                             <Link href="/account/info">
@@ -96,9 +96,9 @@ const Account = () =>{
                             </div>
                             <Link href="account/times">
                                 <a  className="text-gray-500 text-xl flex items-center">
-                                <div className="mr-4  text-base text-black font-semibold">
-                                    2
-                                </div>
+                                {/*<div className="mr-4  text-base text-black font-semibold">*/}
+                                {/*   */}
+                                {/*</div>*/}
                                 <i className="fa fa-chevron-right " aria-hidden="true"></i>
                                 </a>
                             </Link>
@@ -261,7 +261,7 @@ const Account = () =>{
                             type="button"
                             className="w-44"
                         >
-                            <img src="https://cdn.discordapp.com/attachments/876498266550853642/969897114500997160/logout.png" alt=""/>
+                            <img src="https://cdn.discordapp.com/attachments/876498266550853642/986208220232187954/LOGOUT.png" alt=""/>
                         </button>
                     </div>
                 </div>

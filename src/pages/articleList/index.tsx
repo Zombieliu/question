@@ -43,7 +43,7 @@ const ArticleList = () =>{
             <div className=" mx-auto  ">
                 <div className="fixed z-20 inset-x-0 flex justify-between">
                     <button onClick={()=>{window.history.back()}}>
-                        <img className="w-8 ml-4 " src="https://cdn.discordapp.com/attachments/876498266550853642/984029778149523466/Login.png" alt=""/>
+                        <img className="w-8 ml-5 " src="https://cdn.discordapp.com/attachments/876498266550853642/984029778149523466/Login.png" alt=""/>
                     </button>
                     <div className="text-xl text-white font-semibold">
                         文章列表

@@ -47,7 +47,7 @@ const Activation = () =>{
             <div className=" mx-auto  ">
                 <div className="fixed z-20 inset-x-0 flex justify-between">
                     <button onClick={()=>{window.history.back()}}>
-                        <img className="w-8 ml-4" src="https://cdn.discordapp.com/attachments/876498266550853642/984031844666314812/activation.png" alt=""/>
+                        <img className="w-8 ml-5" src="https://cdn.discordapp.com/attachments/876498266550853642/984031844666314812/activation.png" alt=""/>
                     </button>
                 </div>
                 <div className="max-w-7xl relative px-12 py-16 h-screen   sm:px-6  mx-auto ">

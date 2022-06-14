@@ -42,7 +42,8 @@ const PetList = atom ([])
 const pet_info = atom([])
 
 const SeasonName = atomWithStorage("SeasonName","")
+const SeasonPhase = atomWithStorage("SeasonPhase","第er期")
 
 export {GSTToken,GMTToken,NEARToken,PeopleAvatar,PeopleEmail,NearAccount,PeopleName,PublicKey,SecretKey,SeedPhrase,PeopleGender,OpenAvatar,OpenName,OpenGender
-,LoadingState,PetList,pet_info,ExternalNEARToken,ExternalUSNToken,ExternalGSTToken,ExternalGMTToken,HiddenReciprocal,SwitchChain,SeasonName}
+,LoadingState,PetList,pet_info,ExternalNEARToken,ExternalUSNToken,ExternalGSTToken,ExternalGMTToken,HiddenReciprocal,SwitchChain,SeasonName,SeasonPhase}
 

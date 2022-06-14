@@ -20,13 +20,18 @@ const Send = () =>{
         <div className="relative">
             <div className="absolute inset-x-0 bottom-0    " />
             <div className=" mx-auto  ">
+                <div className="absolute inset-0">
+                    <img
+                        className=" w-full mx-auto"
+                        src="https://cdn.discordapp.com/attachments/876498266550853642/986209597545127976/SEND.png"
+                        alt="People working on laptops"
+                    />
+                </div>
                 <div className="fixed z-20 inset-x-0 flex justify-between">
-                    <button onClick={()=>{window.history.back()}}>
-                        <div className=" text-2xl text-gray-600 px-5">
-                            <i className="fa fa-reply" aria-hidden="true"></i>
-                        </div>
+                    <button onClick={()=>{window.history.back()}} className="pl-5">
+                        <img className="w-8  " src="https://cdn.discordapp.com/attachments/876498266550853642/984029778149523466/Login.png" alt=""/>
                     </button>
-                    <div className="text-xl font-semibold">
+                    <div className="text-2xl font-semibold text-white">
                        Send
                     </div>
                     <div>
@@ -52,9 +57,9 @@ const Send = () =>{
                     <div className="flex justify-center mt-48">
                         <button
                             onClick={send}
-                            className="w-72 flex mt-5  justify-center rounded-full border border-gray-600 border-b-4 border-r-4  shadow-sm px-4 py-2 bg-blue-300 text-base font-medium text-white "
+                            className="w-72 flex mt-5  justify-center rounded-full  "
                         >
-                            Send
+                            <img src="https://cdn.discordapp.com/attachments/876498266550853642/986208791781593148/send.png" alt=""/>
                         </button>
                     </div>
                     </div>

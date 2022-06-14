@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import Wallet from "../../components/wallet";
 import {useAtom} from "jotai";
-import {NearAccount, PeopleAvatar, PeopleEmail, pet_info, PetList, SeasonName} from "../../jotai";
+import {NearAccount, PeopleAvatar, PeopleEmail, pet_info, PetList, SeasonName, SeasonPhase} from "../../jotai";
 import Navigation from "../../components/navigation";
 import Link from 'next/link';
 import Header from "../../components/header";
@@ -28,56 +28,46 @@ const Main = () =>{
             h1:" I spend my time to make a 3d animated meme and the other guy gets it ??A whole ",
         }
     ]
-    const info_ob = {
-        near_pet_index:'0',
-        near_pet_image_url:"https://cdn.discordapp.com/attachments/876498266550853642/981828663366541352/xie.png",
-        near_pet_level:""
-    }
-    const info = [
-        {
-            near_pet_index:'1',
-            near_pet_image_url:"https://cdn.discordapp.com/attachments/876498266550853642/981828663366541352/xie.png",
-            near_pet_level:""
-        }
-    ]
+
     const router = useRouter()
     //Correct_number
     const [Correct_number,setCorrect_number] = useState(0)
     //AllQuestionNumber
     const [AllQuestionNumber,setAllQuestionNumber] = useState(0)
+    //seasonImg
+    const [seasonImg,SetSeasonImg] = useState("https://cdn.discordapp.com/attachments/876498266550853642/984025747171713055/main_.png")
+    //
     const [email,] = useAtom(PeopleEmail)
     const [seasonName,setSeasonName] =useAtom(SeasonName)
-    const [Pet,setPetList] = useState(info)
-    //Update Pet
-    const [pet,setPet] = useState(info_ob)
+    const [season_phase,] = useAtom(SeasonPhase)
+
     const [near_address,] =useAtom(NearAccount)
     useEffect(()=>{
         if (router.isReady){
-            setSeasonName("王冠淇")
+
             const fetchUserBounty = async () => {
+
                 //
                 const seasonNameData = await axios.get("http://127.0.0.1:7001/api/near/query/season_questions_number",{
                     params:{
-                        season:seasonName,
+                        near_address,
+                        season_phase,
                         email
                     }})
-                setCorrect_number(seasonNameData.data.correct_number)
-                setAllQuestionNumber(seasonNameData.data.all_questions)
-                console.log(seasonNameData)
-
-                const data= await axios.get("http://127.0.0.1:7001/api/near/user/pet/all",{
-                    params:{
-                        near_address
-                    }})
-                setPetList(data.data)
-                setPet(data.data[0])
+                if(seasonNameData.data){
+                    setSeasonName(seasonNameData.data.season)
+                    setCorrect_number(seasonNameData.data.correct_number)
+                    setAllQuestionNumber(seasonNameData.data.all_questions)
+                    SetSeasonImg(seasonNameData.data.season_url)
+                    console.log(seasonName)
+                }
 
             }
             fetchUserBounty()
         }
     },[router.isReady])
 
-    if (Pet[0].near_pet_index != '0'){
+
         return (
             <div className="relative ">
                 <div className="absolute inset-x-0 bottom-0    " />
@@ -105,17 +95,17 @@ const Main = () =>{
                         <div>
                                 <div className=" mt-5 shadow-3xl   rounded-full ">
                                     <div className="flex  items-center text-2xl   ">
-                                        <Link href={`/pet/${pet.near_pet_index}`}>
-                                            <img className=" rounded-2xl mx-auto" src="https://cdn.discordapp.com/attachments/876498266550853642/984025747171713055/main_.png" alt=""/>
+                                        <Link href={`/season`}>
+                                            <img className=" rounded-2xl mx-auto" src={seasonImg} alt=""/>
                                         </Link>
                                     </div>
                                 </div>
 
                             <div className="flex justify-between mt-10  text-3xl text-blue-500 ">
-                                <Link href="">
+                                <Link href="https://web3games.com">
                                     <img className="w-12" src="https://cdn.discordapp.com/attachments/876498266550853642/984025746613891092/main_.png" alt=""/>
                                 </Link>
-                                <Link href="">
+                                <Link href="https://www.tailwindcss.cn/docs/background-image">
                                     <img className="w-12" src="https://cdn.discordapp.com/attachments/876498266550853642/984025746861326376/main_.png" alt=""/>
                                 </Link>
                             </div>
@@ -186,85 +176,7 @@ const Main = () =>{
                 </div>
             </div>
         )
-    }else{
-        return (
-            <div className="relative">
-                <div className="absolute inset-x-0 bottom-0    " />
-                <div className=" mx-auto  ">
-                    <div className="absolute inset-0">
-                        <img
-                            className="h-screen w-full mx-auto"
-                            src="https://cdn.discordapp.com/attachments/876498266550853642/969529054967529522/5.png"
-                            alt="People working on laptops"
-                        />
-                    </div>
-                    <Header/>
-                    <div className="max-w-7xl relative px-8 pt-20 pb-7 max-h-screen    mx-auto rounded-b-3xl ">
-                        <div>
-                            <Transition
-                                show={true}
-                                enter="transition-opacity ease-linear duration-300"
-                                enterFrom="opacity-0"
-                                enterTo="opacity-100"
-                                leave="transition-opacity ease-linear duration-300"
-                                leaveFrom="opacity-100"
-                                leaveTo="opacity-0"
-                            >
-                                <div className="border-2 border-gray-400 bg-white rounded-2xl border-b-4 border-r-4">
-                                    <div className="text-center mt-4 mb-10">
 
-                                    </div>
-                                    <div className="flex px-4 items-center text-2xl h-56 text-gray-400">
-                                        <div className="">
-
-                                        </div>
-
-                                        <div>
-
-                                        </div>
-                                    </div>
-
-                                    <div className="flex justify-between px-4 mt-16 mb-3">
-                                        <div className="rounded-full border border-gray-400 w-20 h-5">
-                                        </div>
-                                        <div>
-
-                                        </div>
-                                        <div className="rounded-full border border-gray-400 w-20 h-5">
-                                        </div>
-                                    </div>
-                                </div>
-                            </Transition>
-                        </div>
-                        <div className="flex justify-between mt-10 text-3xl text-blue-500 ">
-                            <button>
-                                <i className="fa fa-gift" aria-hidden="true"></i>
-                            </button>
-                            <button>
-                                <i className="fa fa-question-circle-o" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                        <div className="flex justify-center mt-28 items-center ">
-                            <div className="">
-                                <img className="w-32" src="https://cdn.discordapp.com/attachments/876498266550853642/969501553935405076/LEARN.png" alt=""/>
-                            </div>
-                            <div>
-                                <Link href="/answer">
-                                    <div className="">
-                                        <img className="w-32" src="https://cdn.discordapp.com/attachments/876498266550853642/969501554119933962/REVIEW.png" alt=""/>
-                                    </div>
-                                </Link>
-                            </div>
-                        </div>
-                        <div className="text-xs mt-2 flex justify-end pr-10">
-
-                        </div>
-                    </div>
-                    {/*<Navigation/>*/}
-                </div>
-            </div>
-        )
-    }
 }
 
 export default Main

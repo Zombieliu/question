@@ -43,8 +43,8 @@ const Pet = () =>{
                         </div>
                     </a>
                 </Link>
-                {/*{pet.map((item=>(*/}
-                {/*    <Link href={`/pet/${item.near_pet_index}`}  key={item.near_pet_index} >*/}
+                {/*{season.map((item=>(*/}
+                {/*    <Link href={`/season/${item.near_pet_index}`}  key={item.near_pet_index} >*/}
                 {/*    <a className=" rounded-2xl  text-center border border-gray-500 border-2 border-b-4 border-r-4">*/}
                 {/*        <div className=" px-4  pb-2 border-gray-500">*/}
                 {/*            <div className="flex justify-center items-center">*/}
@@ -94,7 +94,7 @@ const Eggs = () =>{
                         </div>
                     </Link>
 
-                {/*{pet.map((item=>(*/}
+                {/*{season.map((item=>(*/}
                 {/*    <Link href={`/egg/${item.near_pet_eggs_index}`} key={item.near_pet_eggs_index}>*/}
                 {/*    <div  className=" rounded-2xl  text-center border border-gray-500 border-2 border-b-4 border-r-4">*/}
                 {/*        <div className=" px-4  border-gray-500">*/}

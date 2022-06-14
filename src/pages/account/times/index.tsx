@@ -69,7 +69,7 @@ const Record = () =>{
                     <Link href={`times/seasonDetail/${item.season}`} key={item.season}>
                 <div className="flex items-center border-b pb-4 justify-between">
                     <div className="flex items-center">
-                    <img className="w-24" src={item.season_url} alt=""/>
+                    <img className="w-24 rounded-2xl" src={item.season_url} alt=""/>
                     <div className="ml-4">
                      <div>
                         一共答题次数 {item.all_questions} 次！
@@ -84,48 +84,6 @@ const Record = () =>{
                     </div>
 
                 </div>
-                    </Link>
-                )))}
-                {info.map((item=>(
-                    <Link href={`times/seasonDetail/${item.season}`} key={item.season}>
-                        <div className="flex items-center border-b pb-4 justify-between">
-                            <div className="flex items-center">
-                                <img className="w-24" src={item.season_url} alt=""/>
-                                <div className="ml-4">
-                                    <div>
-                                        一共答题次数 {item.all_questions} 次！
-                                    </div>
-                                    <div>
-                                        正确答题次数 {item.correct_number} 次！
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="text-xl font-semibold">
-                                <i className="fa fa-angle-right" aria-hidden="true"></i>
-                            </div>
-
-                        </div>
-                    </Link>
-                )))}
-                {info.map((item=>(
-                    <Link href={`times/seasonDetail/${item.season}`} key={item.season}>
-                        <div className="flex items-center border-b pb-4 justify-between">
-                            <div className="flex items-center">
-                                <img className="w-24" src={item.season_url} alt=""/>
-                                <div className="ml-4">
-                                    <div>
-                                        一共答题次数 {item.all_questions} 次！
-                                    </div>
-                                    <div>
-                                        正确答题次数 {item.correct_number} 次！
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="text-xl font-semibold">
-                                <i className="fa fa-angle-right" aria-hidden="true"></i>
-                            </div>
-
-                        </div>
                     </Link>
                 )))}
             </div>
@@ -146,22 +104,24 @@ const Times = () =>{
                 />
             </div>
             <div className="absolute inset-x-0 bottom-0    " />
-            <div className="fixed z-20 inset-x-0 flex justify-between items-center ">
-                <Link href="/account">
-                    <img className="w-8  " src="https://cdn.discordapp.com/attachments/876498266550853642/984029778149523466/Login.png" alt=""/>
-                </Link>
-                <div className="flex justify-center font-semibold text-2xl items-center ">
-                    <Link href="/wallet/external">
-                        <a className=" text-white  ">
-                            Learning Record
-                        </a>
-                    </Link>
-                </div>
-                <div className="  text-2xl text-gray-600 px-5">
-                </div>
-            </div>
 
             <div className=" mx-auto  ">
+                <div className="fixed z-20 inset-x-0 flex justify-between items-center">
+                    <Link href="/account">
+                        <a className="pl-5">
+                        <img className="w-8  " src="https://cdn.discordapp.com/attachments/876498266550853642/984029778149523466/Login.png" alt=""/>
+                        </a>
+                    </Link>
+                    <div className="flex justify-center font-semibold text-2xl items-center ">
+                        <Link href="/wallet/external">
+                            <a className=" text-white  ">
+                                Learning Record
+                            </a>
+                        </Link>
+                    </div>
+                    <div className="  text-2xl text-gray-600 px-5">
+                    </div>
+                </div>
                 <div className="max-w-7xl relative  h-screen  overflow-hidden mx-auto ">
                     <Record/>
                 </div>

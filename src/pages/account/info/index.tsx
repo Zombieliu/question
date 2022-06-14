@@ -234,18 +234,25 @@ const Info = () =>{
         <div className="relative">
             <div className="absolute inset-x-0 bottom-0    " />
             <div className=" mx-auto  ">
+                <div className="absolute inset-0">
+                    <img
+                        className=" w-full mx-auto"
+                        src="https://cdn.discordapp.com/attachments/876498266550853642/985945859994832917/4ddf533ab992a3d5.png"
+                        alt="People working on laptops"
+                    />
+                </div>
                 <Link href="/account">
-                    <div className="fixed z-20 inset-x-0 text-2xl text-gray-600 px-5">
-                        <i className="fa fa-reply" aria-hidden="true"></i>
+                    <div className="fixed z-20 inset-x-0 text-2xl text-gray-600 pl-5">
+                        <img className="w-8  " src="https://cdn.discordapp.com/attachments/876498266550853642/984029778149523466/Login.png" alt=""/>
                     </div>
                 </Link>
                 <div className="max-w-7xl relative px-8 py-16   mx-auto ">
                         {/*avatar*/}
-                        <div className="">
+                        <div className="mt-8">
                         <div   className="flex justify-center">
                             <img onClick={()=>setOpenAvatar(true)} className="w-24 rounded-full" src={avatar} alt=""/>
                         </div>
-                        <div className="flex justify-center ml-16 -mt-5 text-3xl text-gray-500">
+                        <div className="flex justify-center ml-16 -mt-5 text-3xl text-white">
                         <i onClick={()=>setOpenAvatar(true)} className="fa fa-pencil-square-o " aria-hidden="true"></i>
                         </div>
                         </div>

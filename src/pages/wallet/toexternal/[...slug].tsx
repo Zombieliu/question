@@ -72,7 +72,7 @@ const ToExternal = () =>{
             <div className=" mx-auto  ">
                 <div className="fixed z-20 inset-x-0 flex justify-between">
                     <Link href="/wallet/external">
-                        <img className="w-8 ml-6 " src="https://cdn.discordapp.com/attachments/876498266550853642/984029778149523466/Login.png" alt=""/>
+                        <img className="w-8 ml-5 " src="https://cdn.discordapp.com/attachments/876498266550853642/984029778149523466/Login.png" alt=""/>
                     </Link>
                     <div className="text-xl font-semibold">
                       SEND TO

@@ -5,6 +5,7 @@ import {useAtom} from "jotai";
 import {GSTToken, PeopleEmail, SeasonName} from "../../../jotai";
 import axios from "axios";
 import {useRouter} from "next/router";
+import svg from "../../../../public/popbox.svg"
 
 
 function classNames(...classes) {
@@ -241,10 +242,16 @@ const Questions = () =>{
                                 leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                             >
-                                <div className="bg-repeat inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6"
-                                     style={{backgroundImage:"url('https://cdn.discordapp.com/attachments/876498266550853642/984846878451580999/b9ae8a64bc7bfadb.png')"}}
+                                <div className="relative  inline-block align-bottom bg-white rounded-2xl px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6"
                                 >
-                                    <div>
+                                    <div className="absolute inset-0 ">
+                                        <img
+                                            className=" w-full mx-auto "
+                                            src="https://cdn.discordapp.com/attachments/876498266550853642/984846878451580999/b9ae8a64bc7bfadb.png"
+                                            alt="People working on laptops"
+                                        />
+                                    </div>
+                                    <div className="relative">
                                         <div className=" text-center mt-2 w-80">
                                             <div className="font-semibold">
                                                 Congratulations！ 🎉
@@ -260,7 +267,7 @@ const Questions = () =>{
                                             {/*</div>*/}
                                         </div>
                                     </div>
-                                    <div className="mt-5 ">
+                                    <div className="mt-5 relative">
                                         <div className="flex justify-center  ">
                                             <button onClick={()=>{nextQuestion(questionNumber+1)}}>
                                                 <img className="w-36" src="https://cdn.discordapp.com/attachments/876498266550853642/984846878250246164/congratulations_.png" alt=""/>
@@ -299,16 +306,13 @@ const Questions = () =>{
                                 leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                             >
-                                <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
-                                    <div>
-
-                                        <div className=" text-center mt-2 w-80">
+                                <div className="relative inline-block align-bottom bg-white rounded-2xl px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
+                                        <div className="relative text-center mt-2 w-80">
                                             <div className="font-semibold">
                                                 很抱歉回答错误
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="mt-10 ">
+                                    <div className="mt-10 relative">
                                         <div className="flex justify-center  ">
                                             <button onClick={()=>{nextQuestion(questionNumber+1)}}>
                                                 <img className="w-36" src="https://cdn.discordapp.com/attachments/876498266550853642/984846878250246164/congratulations_.png" alt=""/>

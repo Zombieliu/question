@@ -97,7 +97,7 @@ const Mint = () =>{
             <div className=" mx-auto  ">
                 <div className="fixed z-20 inset-x-0 flex justify-between">
                         <div onClick={()=>{window.history.go(-1)}
-                        } className=" text-2xl text-gray-600 px-5">
+                        } className=" text-2xl text-gray-600 pl-5">
                             <i className="fa fa-reply" aria-hidden="true"></i>
                         </div>
                     <div className="text-xl font-semibold">

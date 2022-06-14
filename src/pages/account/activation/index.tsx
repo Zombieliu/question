@@ -27,23 +27,21 @@ const Activation = () =>{
     }
     return (
         <div className="relative h-screen overflow-hidden">
-            <div className="absolute inset-x-0 bottom-0    " />
             <div className="absolute inset-0">
                 <img
-                    className="h-screen w-full mx-auto"
-                    src="https://cdn.discordapp.com/attachments/876498266550853642/969899683751284746/acvitation_code.png"
+                    className=" w-full mx-auto"
+                    src="https://cdn.discordapp.com/attachments/876498266550853642/985946248148308009/Activation_code.png"
                     alt="People working on laptops"
                 />
             </div>
             <div className=" mx-auto  ">
-
-                <div className="fixed z-20 inset-x-0 flex justify-between">
+                <div className="fixed z-20 inset-x-0 flex justify-between items-center">
                     <button onClick={()=>{window.history.back()}}>
-                    <div className=" text-2xl text-gray-600 px-5">
-                        <i className="fa fa-reply" aria-hidden="true"></i>
-                    </div>
+                        <div className="  text-2xl text-gray-600 pl-5">
+                            <img className="w-8  " src="https://cdn.discordapp.com/attachments/876498266550853642/984029778149523466/Login.png" alt=""/>
+                        </div>
                 </button>
-                    <div className="text-xl font-semibold">
+                    <div className="text-2xl font-semibold ">
                         Activation Code
                     </div>
                     <div>
@@ -52,7 +50,7 @@ const Activation = () =>{
                     </div>
                 </div>
                 <div className="max-w-7xl relative px-4 pt-20 py-10   mx-auto ">
-                    <div>
+                    <div className="pt-7">
                         <div className="border border-black bg-white px-10 py-10 rounded-xl">
                             <div className="flex justify-center">
                                 Availabe/Total

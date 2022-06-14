@@ -94,7 +94,7 @@ const ExTransfer = () =>{
             <div className=" mx-auto  ">
                 <div className="fixed z-20 inset-x-0 flex justify-between">
                     <button onClick={()=>{window.history.back()}}>
-                        <div className="text-2xl text-gray-600 px-5">
+                        <div className="text-2xl text-gray-600 pl-5">
                             <i className="fa fa-reply" aria-hidden="true"></i>
                         </div>
                     </button>

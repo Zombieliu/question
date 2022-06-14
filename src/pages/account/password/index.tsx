@@ -8,13 +8,20 @@ const Email = () =>{
         <div className="relative">
             <div className="absolute inset-x-0 bottom-0    " />
             <div className=" mx-auto">
+                <div className="absolute inset-0">
+                    <img
+                        className=" w-full mx-auto"
+                        src="https://cdn.discordapp.com/attachments/876498266550853642/985945430384861265/email.png"
+                        alt="People working on laptops"
+                    />
+                </div>
                 <Link href="/account/info">
-                    <div className="text-2xl text-gray-600 px-5">
-                        <i className="fa fa-reply" aria-hidden="true"></i>
+                    <div className="text-2xl fixed z-20 inset-x-0 text-gray-600 pl-5">
+                        <img className="w-8  " src="https://cdn.discordapp.com/attachments/876498266550853642/984029778149523466/Login.png" alt=""/>
                     </div>
                 </Link>
                 <div className="max-w-7xl relative px-8 py-10   mx-auto ">
-                    <div className="mt-5">
+                    <div className="mt-28">
                         <div>New Email</div>
                         <input type="text"
                                className="text-xs  md:text-sm mt-2 rounded-lg p-2 py-3 w-full border-gray-700 border   focus:border-blue-500 transition duration-300  outline-none"
@@ -41,11 +48,8 @@ const Email = () =>{
                     </div>
 
                     <div className="flex justify-center mt-20">
-                        <button
-                            type="button"
-                            className="w-36 flex mt-5  justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-300 text-base font-medium text-white "
-                        >
-                            SAVE
+                        <button>
+                            <img className="w-40" src="https://cdn.discordapp.com/attachments/876498266550853642/985945430623932486/emailsave.png" alt=""/>
                         </button>
                     </div>
                 </div>

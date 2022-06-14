@@ -418,7 +418,7 @@ const External = () =>{
             <div className=" mx-auto  ">
                 <div className="fixed z-20 inset-x-0 flex justify-between items-center">
                     <Link href="/main">
-                        <img className="w-8 ml-4 " src="https://cdn.discordapp.com/attachments/876498266550853642/984029778149523466/Login.png" alt=""/>
+                        <img className="w-8 ml-5 " src="https://cdn.discordapp.com/attachments/876498266550853642/984029778149523466/Login.png" alt=""/>
                     </Link>
                     <div className="flex justify-center font-semibold text-2xl items-center text-white">
                         <Link href="/wallet/external">

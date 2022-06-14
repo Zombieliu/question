@@ -5,11 +5,18 @@ import axios from "axios";
 const Login = () =>{
     const[email,setEmail] = useAtom(PeopleEmail)
     //Open waiting time 10s
-    const[hidden,setHidden] = useState(false)
-    const[near_address,setNear_hex_account] =useAtom(NearAccount)
-    useEffect(()=>{
-
-    },[])
+    const [hidden,setHidden] = useState(false)
+    const [time,setTime] = useState(0)
+    const [near_address,setNear_hex_account] = useAtom(NearAccount)
+    useEffect(() => {
+        setTimeout(() => {
+            if (time > 0) {
+                setTime(time - 1);
+            }else {
+                setHidden(false)
+            }
+        }, 1000);
+    }, [time]);
 
     //get verification code
 
@@ -19,8 +26,7 @@ const Login = () =>{
             email:Email
         })
             .then(function (response) {
-                setHidden(true)
-                countdown()
+                countdown(10)
             })
             .catch(function (error) {
                 alert("请检查邮箱")
@@ -30,11 +36,9 @@ const Login = () =>{
 
     //Disable clicks
 
-    const countdown = ()=>{
+    const countdown = (e)=>{
             setHidden(true)
-            setTimeout(()=> {
-                setHidden(false)
-            },10000)
+            setTime(e)
         }
 
     const login = async () =>{
@@ -89,7 +93,7 @@ const Login = () =>{
             <div className=" mx-auto  ">
                 <div className="fixed z-20 inset-x-0 flex justify-between">
                     <button onClick={()=>{window.history.back()}}>
-                        <img className="w-8 ml-4 mt-10" src="https://cdn.discordapp.com/attachments/876498266550853642/984029778149523466/Login.png" alt=""/>
+                        <img className="w-8 ml-5 " src="https://cdn.discordapp.com/attachments/876498266550853642/984029778149523466/Login.png" alt=""/>
                     </button>
                 </div>
                 <div className="max-w-7xl relative px-12 py-16 h-screen  sm:px-6  mx-auto ">
@@ -107,8 +111,8 @@ const Login = () =>{
                                     <div className="w-24 rounded-lg px-5 py-3 bg-white">
                                         Spend
                                     </div></button>
-                                <button  className={hidden?"cursor-not-allowed w-32 bg-blue-300 py-3 rounded-xl font-semibold":"hidden"}>
-                                    Resend
+                                <button className={hidden?" rounded-lg px-5 py-3 bg-white":"hidden"}>
+                                    Resend {time} s
                                     </button>
                             </div>
                         </div>

@@ -29,7 +29,7 @@ const Pet = () =>{
             <div>
 
             <div className="grid grid-cols-2 gap-3">
-                {/*{pet.map((item=>(*/}
+                {/*{season.map((item=>(*/}
                 {/*    <Link href={`/shop/detail/${item.near_pet_index}`} key={item.near_pet_index}>*/}
                 {/*    <div  className=" rounded-2xl  text-center border border-gray-500 border-2 border-b-4 border-r-4">*/}
                 {/*        <div className=" px-4  border-gray-500">*/}
@@ -129,7 +129,7 @@ const Eggs = () =>{
                             </div>
                         </div>
                     </Link>
-                {/*{pet.map((item=>(*/}
+                {/*{season.map((item=>(*/}
                 {/*    <Link href={`/shop/egg/${item.near_pet_eggs_index}`} key={item.near_pet_eggs_index} >*/}
                 {/*    <div className=" rounded-2xl  text-center border border-gray-500 border-2 border-b-4 border-r-4">*/}
                 {/*        <div className=" px-4  border-gray-500">*/}
@@ -206,7 +206,7 @@ const NFT = () =>{
                             </div>
                         </div>
                     </Link>
-                    {/*{pet.map((item=>(*/}
+                    {/*{season.map((item=>(*/}
                     {/*    <Link href={`/shop/egg/${item.near_pet_eggs_index}`} key={item.near_pet_eggs_index} >*/}
                     {/*    <div className=" rounded-2xl  text-center border border-gray-500 border-2 border-b-4 border-r-4">*/}
                     {/*        <div className=" px-4  border-gray-500">*/}
