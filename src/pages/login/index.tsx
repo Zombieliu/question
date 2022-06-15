@@ -87,7 +87,6 @@ const Login = () =>{
                 <img
                     className="h-screen w-full mx-auto"
                     src="https://cdn.discordapp.com/attachments/876498266550853642/984032771808854016/Login.png"
-                    alt="People working on laptops"
                 />
                 </div>
             <div className=" mx-auto  ">

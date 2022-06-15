@@ -238,7 +238,7 @@ const Info = () =>{
                     <img
                         className=" w-full mx-auto"
                         src="https://cdn.discordapp.com/attachments/876498266550853642/985945859994832917/4ddf533ab992a3d5.png"
-                        alt="People working on laptops"
+                         
                     />
                 </div>
                 <Link href="/account">

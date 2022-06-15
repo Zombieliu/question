@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from 'react'
-import Wallet from "../../components/wallet";
 import {useAtom} from "jotai";
-import {NearAccount, PeopleAvatar, PeopleEmail, pet_info, PetList, SeasonName, SeasonPhase} from "../../jotai";
-import Navigation from "../../components/navigation";
+import {NearAccount,PeopleAvatar,PeopleEmail,SeasonName,SeasonPhase} from "../../jotai";
 import Link from 'next/link';
 import Header from "../../components/header";
 import { Transition } from '@headlessui/react';
@@ -78,7 +76,6 @@ const Main = () =>{
                         <img
                             className=" w-full mx-auto"
                             src="https://cdn.discordapp.com/attachments/876498266550853642/984003929085988864/main_.png"
-                            alt="People working on laptops"
                         />
                     </div>
                     <div className="max-w-7xl relative px-8  pt-20 pb-12 max-h-screen overflow-auto   mx-auto rounded-b-3xl ">

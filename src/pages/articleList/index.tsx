@@ -36,7 +36,7 @@ const ArticleList = () =>{
                 <img
                     className=" w-full mx-auto"
                     src="https://cdn.discordapp.com/attachments/876498266550853642/984843756513673286/e1ba6b7943c6586f.png"
-                    alt="People working on laptops"
+                     
                 />
             </div>
 

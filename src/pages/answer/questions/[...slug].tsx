@@ -179,7 +179,7 @@ const Questions = () =>{
                 <img
                     className=" w-full mx-auto"
                     src="https://cdn.discordapp.com/attachments/876498266550853642/984852405730558002/43ce9511e6ed0de5.png"
-                    alt="People working on laptops"
+                     
                 />
             </div>
             <div className="absolute inset-x-0 bottom-0    " />
@@ -248,7 +248,7 @@ const Questions = () =>{
                                         <img
                                             className=" w-full mx-auto "
                                             src="https://cdn.discordapp.com/attachments/876498266550853642/984846878451580999/b9ae8a64bc7bfadb.png"
-                                            alt="People working on laptops"
+                                             
                                         />
                                     </div>
                                     <div className="relative">

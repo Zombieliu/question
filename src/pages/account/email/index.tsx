@@ -12,7 +12,7 @@ const Email = () =>{
                     <img
                         className=" w-full mx-auto"
                         src="https://cdn.discordapp.com/attachments/876498266550853642/985945430384861265/email.png"
-                        alt="People working on laptops"
+                         
                     />
                 </div>
                 <Link href="/account/info">

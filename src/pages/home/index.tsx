@@ -20,7 +20,7 @@ const Home = () =>{
                 <img
                     className="h-screen w-full mx-auto"
                     src="https://cdn.discordapp.com/attachments/876498266550853642/984028870367903754/f37ee4a219518981.png"
-                    alt="People working on laptops"
+                     
                 />
             </div>
             <div className=" mx-auto  ">

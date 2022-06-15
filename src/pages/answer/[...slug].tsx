@@ -86,7 +86,7 @@ const Answer = ()=>{
                 <img
                     className=" w-full mx-auto"
                     src="https://cdn.discordapp.com/attachments/876498266550853642/984844299080437810/c2343640971ac38f.png"
-                    alt="People working on laptops"
+                     
                 />
             </div>
             <div className="absolute inset-x-0 bottom-0    " />

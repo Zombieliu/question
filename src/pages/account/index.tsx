@@ -40,7 +40,7 @@ const Account = () =>{
                 <img
                     className=" w-full mx-auto"
                     src="https://cdn.discordapp.com/attachments/876498266550853642/984845613344641054/11b94cf14c61fc08.png"
-                    alt="People working on laptops"
+                     
                 />
             </div>
             <div className=" mx-auto  ">

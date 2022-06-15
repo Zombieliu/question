@@ -42,7 +42,7 @@ const Pets = () =>{
                     <img
                         className=" w-full mx-auto"
                         src="https://cdn.discordapp.com/attachments/876498266550853642/986209079057854504/ce0e88d6abba21f2.png"
-                        alt="People working on laptops"
+                         
                     />
                 </div>
                 <div className="fixed z-20 inset-x-0 flex justify-between ">

@@ -24,7 +24,6 @@ const Send = () =>{
                     <img
                         className=" w-full mx-auto"
                         src="https://cdn.discordapp.com/attachments/876498266550853642/986209597545127976/SEND.png"
-                        alt="People working on laptops"
                     />
                 </div>
                 <div className="fixed z-20 inset-x-0 flex justify-between">

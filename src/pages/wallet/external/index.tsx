@@ -410,7 +410,7 @@ const External = () =>{
                 <img
                     className=" w-full mx-auto"
                     src="https://cdn.discordapp.com/attachments/876498266550853642/984772327361351680/external.png"
-                    alt="People working on laptops"
+                     
                 />
             </div>
             <div className="absolute inset-x-0 bottom-0    " />

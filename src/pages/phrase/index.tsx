@@ -21,7 +21,6 @@ const Phrase = () =>{
                 <img
                     className="h-screen w-full mx-auto"
                     src="https://cdn.discordapp.com/attachments/876498266550853642/984031182792556604/keystore.png"
-                    alt="People working on laptops"
                 />
             </div>
             <div className=" mx-auto  ">

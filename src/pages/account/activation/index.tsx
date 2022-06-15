@@ -31,7 +31,7 @@ const Activation = () =>{
                 <img
                     className=" w-full mx-auto"
                     src="https://cdn.discordapp.com/attachments/876498266550853642/985946248148308009/Activation_code.png"
-                    alt="People working on laptops"
+                     
                 />
             </div>
             <div className=" mx-auto  ">
