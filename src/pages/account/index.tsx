@@ -1,9 +1,12 @@
 import Link from 'next/link'
-import React, {Fragment, useState} from 'react'
+import React, {Fragment, useEffect, useState} from 'react'
 import {CheckIcon, SelectorIcon, StarIcon} from "@heroicons/react/solid";
 import {Listbox, Switch, Transition} from '@headlessui/react'
 import {useAtom} from "jotai";
 import {PeopleAvatar, PeopleEmail, PeopleName, SwitchChain} from "../../jotai";
+import axios from "axios";
+import {formatDecimal} from "../../utils";
+import { level_style } from '../../constant';
 
 
 
@@ -28,8 +31,39 @@ const Account = () =>{
     const [email,setEmail] = useAtom(PeopleEmail)
     const [avatar,setAvatar] = useAtom(PeopleAvatar)
     const [selected, setSelected] = useAtom(SwitchChain)
-    const  info ={
-        credit: 4
+
+    const [level_styleType,setLevel_styleType]= useState("入门")
+
+    const [level,setLevel] = useState(0)
+    const [level_progress,setLevel_progress] = useState(0)
+
+    useEffect(() =>{
+        const fetchUserBounty = async () => {
+            const levelInfo = await axios.get("http://127.0.0.1:7001/api/near/query/findUserInfo",{
+                params:{
+                    email
+                }
+            })
+            setLevel_progress(levelInfo.data.level_progress)
+            setLevel(levelInfo.data.level)
+            if(levelInfo.data.level < 5){
+                setLevel_styleType("入门")
+            }else if(levelInfo.data.level < 10 ){
+                    setLevel_styleType("进阶")
+                }else if(levelInfo.data.level < 15 ){
+                        setLevel_styleType("高阶")
+                    }else if(levelInfo.data.level < 20 ){
+                            setLevel_styleType("超神")
+            }
+
+        }
+        fetchUserBounty()
+    },[])
+
+    const Level  = async () =>{
+        await axios.post("http://127.0.0.1:7001/api/near/user/upgrade",{
+            email
+        })
     }
 
     return (
@@ -45,7 +79,7 @@ const Account = () =>{
             </div>
             <div className=" mx-auto  ">
                 <Link href="/main">
-                    <div className="fixed z-20 inset-x-0 text-2xl text-gray-600 pl-5">
+                    <div className="fixed z-20 inset-x-0 text-2xl text-gray-600 pl-5 mt-3">
                         <img className="w-8  " src="https://cdn.discordapp.com/attachments/876498266550853642/984029778149523466/Login.png" alt=""/>
                     </div>
                 </Link>
@@ -107,22 +141,26 @@ const Account = () =>{
                         <div className=" flex  justify-between items-center mt-10">
                             <div className="flex items-center ">
                                 <div className="text-left   ml-2">
-                                    <div className="font-semibold">
-                                       Credit
-                                    </div>
+                                    <button onClick={Level} className="font-semibold">
+                                      Level
+                                    </button>
                                 </div>
                             </div>
-                            <div className="text-gray-500 text-xl flex items-center">
-                                {[0, 1, 2, 3, 4].map((rating) => (
-                                    <StarIcon
-                                        key={rating}
-                                        className={classNames(
-                                            info.credit > rating ? 'text-yellow-400' : 'text-gray-200',
-                                            'h-5 w-5 flex-shrink-0'
-                                        )}
-                                        aria-hidden="true"
-                                    />
-                                ))}
+                            <div className="font-semibold  flex items-center">
+                                {level_styleType} {level}
+                                <div className="text-gray-500 ml-2 text-xl flex items-center">
+                                    {level_style[level_styleType].map((rating) => (
+                                        <StarIcon
+                                            key={rating}
+                                            className={classNames(
+                                                level_progress >= rating ? 'text-yellow-400' : 'text-gray-200',
+                                                'h-5 w-5 flex-shrink-0'
+                                            )}
+                                            aria-hidden="true"
+                                        />
+                                    ))}
+                                </div>
+
                             </div>
                         </div>
                     </div>

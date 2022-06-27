@@ -106,7 +106,7 @@ const Times = () =>{
             <div className="absolute inset-x-0 bottom-0    " />
 
             <div className=" mx-auto  ">
-                <div className="fixed z-20 inset-x-0 flex justify-between items-center">
+                <div className="fixed z-20 inset-x-0 flex justify-between items-center ">
                     <Link href="/account">
                         <a className="pl-5">
                         <img className="w-8  " src="https://cdn.discordapp.com/attachments/876498266550853642/984029778149523466/Login.png" alt=""/>

@@ -40,6 +40,8 @@ const Main = () =>{
     const [season_phase,] = useAtom(SeasonPhase)
 
     const [near_address,] =useAtom(NearAccount)
+    const [purchase,setPurchase] = useState(false)
+    const [taskList,setTaskList] =useState([])
     useEffect(()=>{
         if (router.isReady){
 
@@ -53,11 +55,19 @@ const Main = () =>{
                         email
                     }})
                 if(seasonNameData.data){
+                    setPurchase(true)
                     setSeasonName(seasonNameData.data.season)
                     setCorrect_number(seasonNameData.data.correct_number)
                     setAllQuestionNumber(seasonNameData.data.all_questions)
                     SetSeasonImg(seasonNameData.data.season_url)
                     console.log(seasonName)
+                    const taskResult = await  axios.get("http://127.0.0.1:7001/api/near/query/taskList",{
+                        params:{
+                            email
+                        }
+                    })
+                    console.log(taskResult.data)
+                    setTaskList(taskResult.data)
                 }
 
             }
@@ -65,6 +75,23 @@ const Main = () =>{
         }
     },[router.isReady])
 
+    const TaskDone =async (task_complete,task_name) =>{
+        if(task_complete){
+         const taskInfo =  await axios.get("http://127.0.0.1:7001/api/near/query/taskState",{
+                params:{
+                   email,task_name
+                }
+            })
+          if(taskInfo.data.task_complete){
+              await axios.post("http://127.0.0.1:7001/api/near/user/upgrade",{
+                  email,
+                  data_number:taskInfo.data.task_award
+              })
+              alert(`恭喜完成任务 奖励${taskInfo.data.task_award}🌟`)
+              location.reload()
+          }
+        }
+    }
 
         return (
             <div className="relative ">
@@ -110,21 +137,26 @@ const Main = () =>{
 
                         <div className="flex justify-between w-full   overflow-auto pb-3 mt-8 ">
 
-                            {progress.map((item=>(
-                            <div key={item.progress} className="p-2 w-full mr-4  bg-white rounded-2xl ">
-                                <div className=" flex  justify-end">
+                            {taskList.map((item=>(
+                            <div key={item.task_name} onClick={()=>{TaskDone(item.task_complete,item.task_name)}} className="p-2 w-full mr-4  bg-white rounded-2xl ">
+                                <div className={item.task_complete?"flex  justify-end":"hidden"}>
                                     <div  className="h-4 w-10 rounded-2xl bg-green-400">
 
                                     </div>
                                 </div>
-                                <div className="flex justify-between w-80 h-16 items-center px-2">
-                                    <img className="w-20 mr-4" src={item.img} alt=""/>
-                                    <div>
+                                <div className={item.task_complete?"hidden":"flex  justify-end"}>
+                                    <div  className="h-4 w-10 rounded-2xl bg-gray-400">
+
+                                    </div>
+                                </div>
+                                <div className="flex  w-80 h-16 items-center px-2">
+                                    <img className="w-20 mr-14" src={item.task_img} alt=""/>
+                                    <div className="text-center">
                                         <div className="font-semibold">
-                                            {item.progress}
+                                            {item.task_name}
                                         </div>
                                         <div className="text-xs  overflow-hidden">
-                                            {item.h1}
+                                            {item.task_content}
                                         </div>
                                     </div>
                                 </div>
@@ -163,12 +195,21 @@ const Main = () =>{
                             </div>
                     </Transition>
                         {/*Start*/}
-                        <div className="flex justify-center mt-10 items-center ">
+                        <div className={purchase?"hidden":"flex justify-center items-center mt-10  text-black "}>
+                            <Link href="/season">
+                                <div className="text-black">
+                                    点击购买通行证
+                                </div>
+                            </Link>
+                        </div>
+                        <div className={purchase?"flex justify-center mt-10 items-center ":"hidden"}>
                                 <Link href="/articleList">
                                         <img className="w-72 shadow-2xl rounded-2xl" src="https://cdn.discordapp.com/attachments/876498266550853642/984025747649859604/main_.png" alt=""/>
                                 </Link>
                             </div>
                     </div>
+
+
                     {/*<Navigation/>*/}
                 </div>
             </div>

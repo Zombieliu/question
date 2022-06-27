@@ -2,7 +2,7 @@ import React, {Fragment, useEffect, useState} from 'react'
 import {Dialog, Transition} from "@headlessui/react";
 import Link from "next/link";
 import {useAtom} from "jotai";
-import {GSTToken, PeopleEmail, SeasonName} from "../../../jotai";
+import {GSTToken, NearAccount, PeopleEmail, SeasonName, SeasonPhase} from "../../../jotai";
 import axios from "axios";
 import {useRouter} from "next/router";
 import svg from "../../../../public/popbox.svg"
@@ -15,6 +15,9 @@ function classNames(...classes) {
 const Questions = () =>{
     const router = useRouter()
 
+    const [near_address,] =useAtom(NearAccount)
+
+    const [season_phase,] = useAtom(SeasonPhase)
     const [email,] = useAtom(PeopleEmail)
     //Successful answer
     const [openSuccess,setOpenSuccess] = useState(false)
@@ -53,6 +56,30 @@ const Questions = () =>{
             const content_index =Number(router.query.slug[0])
             const content =router.query.slug[1]
             const fetchUserBounty = async (content_index) => {
+
+                const seasonNameData = await axios.get("http://127.0.0.1:7001/api/near/query/season_questions_number",{
+                    params:{
+                        near_address,
+                        season_phase,
+                        email
+                    }})
+                console.log(seasonNameData.data)
+                if(seasonNameData.data == ""){
+                    window.location.replace('/main')
+                }
+                const result = await axios.get("http://127.0.0.1:7001/api/near/query/questions_number",{
+                    params:{
+                        season:seasonName,
+                        content,
+                        content_index,
+                        email,
+                    }
+                })
+                console.log(result.data.correct_number)
+                if(result.data.correct_number>=1){
+                    window.location.replace('/main')
+                }
+
                 const data = await axios.get("http://127.0.0.1:7001/api/near/query/content_Question",{
                     params: {content,content_index,season:seasonName}
                 })
@@ -141,6 +168,7 @@ const Questions = () =>{
     //selected
     const success = async (option)=>{
         console.log(question.question)
+        //get the correct answer
         const data = await axios.get("http://127.0.0.1:7001/api/near/query/content_CorrectQuestion",{
             params:{
                 season:seasonName,
@@ -151,6 +179,7 @@ const Questions = () =>{
             }
         })
         console.log(data.data)
+        //post add history record
         await axios.post("http://127.0.0.1:7001/api/near/renew_all_questions",{
             email,
             season:seasonName,
@@ -158,6 +187,7 @@ const Questions = () =>{
             content_index:question.content_index,
         })
         if(data.data){
+            //true
                 await axios.post("http://127.0.0.1:7001/api/near/renew_correct_number",{
                     email,
                     season:seasonName,
@@ -168,6 +198,10 @@ const Questions = () =>{
         }else {
             setOpenError(true)
         }
+        //task_one
+        await axios.post("http://127.0.0.1:7001/api/near/post/task_one",{
+            email,
+        })
 
     }
 

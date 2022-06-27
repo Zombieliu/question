@@ -1,16 +1,17 @@
 import React, {useEffect} from 'react'
 import {useAtom} from "jotai";
-import {ExternalUSNToken, GMTToken, GSTToken, NearAccount, NEARToken} from "../../jotai";
+import {ExternalUSNToken, GamesCoin, GMTToken, GSTToken, NearAccount, NEARToken, PeopleEmail,} from "../../jotai";
 import Link from "next/link";
 import axios from "axios";
 import {formatDecimal} from "../../utils";
 const Wallet = () =>{
 
-   // const [GSTtoken,setGSTtoken] = useAtom(GSTToken)
-   // const [GMTtoken,setGMTtoken] = useAtom(GMTToken)
    const [NEARtoken,setNEARtoken] = useAtom(NEARToken)
+    const [email,] = useAtom(PeopleEmail)
    const [externalUSNtoken,setExternalUSNtoken] = useAtom(ExternalUSNToken)
    const [near_address,setNear_hex_account] =useAtom(NearAccount)
+   const [Coin,setGamesCoin] = useAtom(GamesCoin)
+
     useEffect(() =>{
         const fetchUserBounty = async () => {
             console.log(near_address)
@@ -29,6 +30,14 @@ const Wallet = () =>{
                 })
             const USN_balance =Number(formatDecimal(USN.data/1000000000000000000,8))
             setExternalUSNtoken(USN_balance)
+
+            const Coin = await axios.get("http://127.0.0.1:7001/api/near/query/findUserInfo",{
+                params:{
+                    email
+                }
+            })
+            setGamesCoin(Coin.data.coin)
+
         }
        fetchUserBounty()
     },[])
@@ -49,6 +58,13 @@ const Wallet = () =>{
               <div className="pl-1 truncate text-xs">
                 {NEARtoken}
               </div>
+            </div>
+            <div className="flex items-center pr-2">
+                <img className="rounded-full w-6"
+                     src="https://cdn.discordapp.com/attachments/876498266550853642/948887549500325888/121.png" alt=""/>
+                <div className="pl-1 truncate text-xs">
+                    {Coin}
+                </div>
             </div>
         </div>
             {/*wallet*/}

@@ -53,4 +53,10 @@ const Constant = ()=>{
             Epic:"text-indigo-400",
             Legendary:"text-yellow-400",
         }
-export {Constant,PetStyle,PetTextStyle}
+    const level_style = {
+    入门:[1,2],
+    进阶:[1,2,3],
+    高阶:[1,2,3,4],
+    超神:[1,2,3,4,5],
+}
+export {Constant,PetStyle,PetTextStyle,level_style}

@@ -3,7 +3,7 @@ import Link from "next/link";
 import {PetStyle} from "../../constant";
 import axios from "axios";
 import {useAtom} from "jotai";
-import {NearAccount, SeasonName} from "../../jotai";
+import {NearAccount, PeopleEmail, SeasonName, SeasonPhase} from "../../jotai";
 import {useRouter} from "next/router";
 
 function classNames(...classes) {
@@ -14,10 +14,23 @@ const ArticleList = () =>{
     const router = useRouter()
     const [near_address,] =useAtom(NearAccount)
     const [seasonName,] =useAtom(SeasonName)
+    const [season_phase,] = useAtom(SeasonPhase)
+    const [email,] = useAtom(PeopleEmail)
     const [list,setList] = useState([])
     useEffect(()=>{
         if(router.isReady){
             const fetchUserBounty = async () => {
+
+                const seasonNameData = await axios.get("http://127.0.0.1:7001/api/near/query/season_questions_number",{
+                    params:{
+                        near_address,
+                        season_phase,
+                        email
+                    }})
+                console.log(seasonNameData.data)
+                if(seasonNameData.data == ""){
+                    window.location.replace('/main')
+                }
                 console.log(near_address)
                 console.log(seasonName)
                 const data= await axios.get("http://127.0.0.1:7001/api/near/query/contentList",

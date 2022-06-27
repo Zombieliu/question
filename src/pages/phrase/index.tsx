@@ -24,9 +24,9 @@ const Phrase = () =>{
                 />
             </div>
             <div className=" mx-auto  ">
-                <div className="fixed z-20 inset-x-0 flex justify-between">
+                <div className="fixed z-20 inset-x-0 flex justify-between pl-5 pt-3">
                     <button onClick={()=>{window.history.back()}}>
-                        <img className="w-8 pl-5 " src="https://cdn.discordapp.com/attachments/876498266550853642/984029778149523466/Login.png" alt=""/>
+                        <img className="w-8  " src="https://cdn.discordapp.com/attachments/876498266550853642/984029778149523466/Login.png" alt=""/>
                     </button>
                 </div>
                 <div className="max-w-7xl relative px-8 py-10   mx-auto ">
@@ -46,7 +46,7 @@ const Phrase = () =>{
                                 </div>
                                 <div className="mt-10">
                                     {phrase.map((l,m)=>
-                                        <div key={l} className=" flex  justify-center  mt-5">
+                                        <div key={l} className=" flex  justify-center  mt-2">
                                             <div className="flex w-20">
                                             <div className="mr-5 text-gray-400">
                                                 {m+1}
