@@ -1,6 +1,7 @@
-import { Fragment, useState } from 'react'
+import {Fragment, useEffect, useState} from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { CheckIcon } from '@heroicons/react/outline'
+import axios from "axios";
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -8,10 +9,19 @@ function classNames(...classes) {
 
 const Test = () =>{
     const [open, setOpen] = useState(true)
-    const [num,setnum]=useState(10)
-    const test = ()=>{
 
+    useEffect( () => {
+        const fetchUserBounty = async () => {
+        const data = await axios.get("http://127.0.0.1:7001/api/near/query/content_Question",{
+            params: {content:"MODA_DAO",
+                content_index:2,
+                season:"abel"}
+        })
+
+            console.log(data.data)
     }
+        fetchUserBounty()
+    },[])
 
     return (
         <Transition.Root show={open} as={Fragment}

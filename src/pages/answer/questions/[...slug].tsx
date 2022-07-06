@@ -55,6 +55,7 @@ const Questions = () =>{
         if (router.isReady){
             const content_index =Number(router.query.slug[0])
             const content =router.query.slug[1]
+            console.log(router.query.slug[0],router.query.slug[1])
             const fetchUserBounty = async (content_index) => {
 
                 const seasonNameData = await axios.get("http://127.0.0.1:7001/api/near/query/season_questions_number",{
@@ -67,6 +68,7 @@ const Questions = () =>{
                 if(seasonNameData.data == ""){
                     window.location.replace('/main')
                 }
+
                 const result = await axios.get("http://127.0.0.1:7001/api/near/query/questions_number",{
                     params:{
                         season:seasonName,
@@ -75,7 +77,7 @@ const Questions = () =>{
                         email,
                     }
                 })
-                console.log(result.data.correct_number)
+
                 if(result.data.correct_number>=1){
                     window.location.replace('/main')
                 }
@@ -83,7 +85,9 @@ const Questions = () =>{
                 const data = await axios.get("http://127.0.0.1:7001/api/near/query/content_Question",{
                     params: {content,content_index,season:seasonName}
                 })
+                console.log(seasonName,content,content_index)
                 setAllQuestions(data.data)
+                console.log(data.data)
                 const QuestionNumber=data.data[0]
                 const info = {
                     content:QuestionNumber.content,
@@ -201,6 +205,7 @@ const Questions = () =>{
         //task_one
         await axios.post("http://127.0.0.1:7001/api/near/post/task_one",{
             email,
+            task_one:question.question,
         })
 
     }
@@ -224,8 +229,8 @@ const Questions = () =>{
                     </div>
                 </div>
                 <div className="max-w-7xl relative h-screen pb-20   mx-auto ">
-                    <div className="">
-                        <div className="h-72 border-t border-b border-gray-500 px-8 bg-white flex items-center justify-center">
+                    <div className="pt-10 ">
+                        <div className="h-80 border-t border-b border-gray-500 p-8 text-sm bg-white flex items-center justify-center">
                             {question.question}
                         </div>
                         <div className=" flex justify-center   items-center h-14 text-sm" >
@@ -237,7 +242,7 @@ const Questions = () =>{
                         </div>
                         <div className="flex grid grid-cols-2 mt-2 border-t border-b border-gray-500 bg-white">
                             {question.options.map((item=>(
-                                <div key={item.option} onClick={()=> success(item.option)} className="flex items-center justify-center text-sm border-gray-500 border-r border-b h-32 ">
+                                <div key={item.option} onClick={()=> success(item.option)} className="flex items-center justify-center text-xs border-gray-500 border-r border-b h-32 px-2">
                                     {item.option}
                                 </div>
                             )))}
